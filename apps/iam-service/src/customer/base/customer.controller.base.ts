@@ -59,6 +59,12 @@ export class CustomerControllerBase {
               connect: data.address,
             }
           : undefined,
+
+        orderReturns: data.orderReturns
+          ? {
+              connect: data.orderReturns,
+            }
+          : undefined,
       },
       select: {
         address: {
@@ -72,6 +78,13 @@ export class CustomerControllerBase {
         firstName: true,
         id: true,
         lastName: true,
+
+        orderReturns: {
+          select: {
+            id: true,
+          },
+        },
+
         phone: true,
         updatedAt: true,
       },
@@ -106,6 +119,13 @@ export class CustomerControllerBase {
         firstName: true,
         id: true,
         lastName: true,
+
+        orderReturns: {
+          select: {
+            id: true,
+          },
+        },
+
         phone: true,
         updatedAt: true,
       },
@@ -141,6 +161,13 @@ export class CustomerControllerBase {
         firstName: true,
         id: true,
         lastName: true,
+
+        orderReturns: {
+          select: {
+            id: true,
+          },
+        },
+
         phone: true,
         updatedAt: true,
       },
@@ -180,6 +207,12 @@ export class CustomerControllerBase {
                 connect: data.address,
               }
             : undefined,
+
+          orderReturns: data.orderReturns
+            ? {
+                connect: data.orderReturns,
+              }
+            : undefined,
         },
         select: {
           address: {
@@ -193,6 +226,13 @@ export class CustomerControllerBase {
           firstName: true,
           id: true,
           lastName: true,
+
+          orderReturns: {
+            select: {
+              id: true,
+            },
+          },
+
           phone: true,
           updatedAt: true,
         },
@@ -236,6 +276,13 @@ export class CustomerControllerBase {
           firstName: true,
           id: true,
           lastName: true,
+
+          orderReturns: {
+            select: {
+              id: true,
+            },
+          },
+
           phone: true,
           updatedAt: true,
         },
@@ -276,6 +323,12 @@ export class CustomerControllerBase {
 
         discount: true,
         id: true,
+
+        orderReturns: {
+          select: {
+            id: true,
+          },
+        },
 
         product: {
           select: {

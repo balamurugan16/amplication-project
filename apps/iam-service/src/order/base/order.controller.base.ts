@@ -57,6 +57,12 @@ export class OrderControllerBase {
             }
           : undefined,
 
+        orderReturns: data.orderReturns
+          ? {
+              connect: data.orderReturns,
+            }
+          : undefined,
+
         product: data.product
           ? {
               connect: data.product,
@@ -74,6 +80,12 @@ export class OrderControllerBase {
 
         discount: true,
         id: true,
+
+        orderReturns: {
+          select: {
+            id: true,
+          },
+        },
 
         product: {
           select: {
@@ -116,6 +128,12 @@ export class OrderControllerBase {
         discount: true,
         id: true,
 
+        orderReturns: {
+          select: {
+            id: true,
+          },
+        },
+
         product: {
           select: {
             id: true,
@@ -157,6 +175,12 @@ export class OrderControllerBase {
 
         discount: true,
         id: true,
+
+        orderReturns: {
+          select: {
+            id: true,
+          },
+        },
 
         product: {
           select: {
@@ -205,6 +229,12 @@ export class OrderControllerBase {
               }
             : undefined,
 
+          orderReturns: data.orderReturns
+            ? {
+                connect: data.orderReturns,
+              }
+            : undefined,
+
           product: data.product
             ? {
                 connect: data.product,
@@ -222,6 +252,12 @@ export class OrderControllerBase {
 
           discount: true,
           id: true,
+
+          orderReturns: {
+            select: {
+              id: true,
+            },
+          },
 
           product: {
             select: {
@@ -272,6 +308,12 @@ export class OrderControllerBase {
 
           discount: true,
           id: true,
+
+          orderReturns: {
+            select: {
+              id: true,
+            },
+          },
 
           product: {
             select: {

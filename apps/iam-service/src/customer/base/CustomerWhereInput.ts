@@ -16,6 +16,7 @@ import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
+import { OrderReturnWhereUniqueInput } from "../../orderReturn/base/OrderReturnWhereUniqueInput";
 import { OrderListRelationFilter } from "../../order/base/OrderListRelationFilter";
 
 @InputType()
@@ -75,6 +76,18 @@ class CustomerWhereInput {
     nullable: true,
   })
   lastName?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => OrderReturnWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => OrderReturnWhereUniqueInput)
+  @IsOptional()
+  @Field(() => OrderReturnWhereUniqueInput, {
+    nullable: true,
+  })
+  orderReturns?: OrderReturnWhereUniqueInput;
 
   @ApiProperty({
     required: false,

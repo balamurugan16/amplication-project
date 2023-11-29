@@ -226,6 +226,12 @@ export class ProductControllerBase {
         discount: true,
         id: true,
 
+        orderReturns: {
+          select: {
+            id: true,
+          },
+        },
+
         product: {
           select: {
             id: true,

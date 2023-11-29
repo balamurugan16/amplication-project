@@ -21,6 +21,7 @@ import {
 } from "class-validator";
 import { Type } from "class-transformer";
 import { Customer } from "../../customer/base/Customer";
+import { OrderReturn } from "../../orderReturn/base/OrderReturn";
 import { Product } from "../../product/base/Product";
 
 @ObjectType()
@@ -60,6 +61,15 @@ class Order {
   @IsString()
   @Field(() => String)
   id!: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => OrderReturn,
+  })
+  @ValidateNested()
+  @Type(() => OrderReturn)
+  @IsOptional()
+  orderReturns?: OrderReturn | null;
 
   @ApiProperty({
     required: false,

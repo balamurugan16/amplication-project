@@ -25,6 +25,10 @@ import { ProductList } from "./product/ProductList";
 import { ProductCreate } from "./product/ProductCreate";
 import { ProductEdit } from "./product/ProductEdit";
 import { ProductShow } from "./product/ProductShow";
+import { OrderReturnList } from "./orderReturn/OrderReturnList";
+import { OrderReturnCreate } from "./orderReturn/OrderReturnCreate";
+import { OrderReturnEdit } from "./orderReturn/OrderReturnEdit";
+import { OrderReturnShow } from "./orderReturn/OrderReturnShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -85,6 +89,13 @@ const App = (): React.ReactElement => {
           edit={ProductEdit}
           create={ProductCreate}
           show={ProductShow}
+        />
+        <Resource
+          name="OrderReturn"
+          list={OrderReturnList}
+          edit={OrderReturnEdit}
+          create={OrderReturnCreate}
+          show={OrderReturnShow}
         />
       </Admin>
     </div>

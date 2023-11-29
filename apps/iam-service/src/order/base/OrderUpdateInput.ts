@@ -14,6 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { CustomerWhereUniqueInput } from "../../customer/base/CustomerWhereUniqueInput";
 import { ValidateNested, IsOptional, IsNumber, IsInt } from "class-validator";
 import { Type } from "class-transformer";
+import { OrderReturnWhereUniqueInput } from "../../orderReturn/base/OrderReturnWhereUniqueInput";
 import { ProductWhereUniqueInput } from "../../product/base/ProductWhereUniqueInput";
 
 @InputType()
@@ -40,6 +41,18 @@ class OrderUpdateInput {
     nullable: true,
   })
   discount?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => OrderReturnWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => OrderReturnWhereUniqueInput)
+  @IsOptional()
+  @Field(() => OrderReturnWhereUniqueInput, {
+    nullable: true,
+  })
+  orderReturns?: OrderReturnWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,

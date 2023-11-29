@@ -8,6 +8,7 @@ import {
   NumberInput,
 } from "react-admin";
 import { CustomerTitle } from "../customer/CustomerTitle";
+import { OrderReturnTitle } from "../orderReturn/OrderReturnTitle";
 import { ProductTitle } from "../product/ProductTitle";
 
 export const OrderEdit = (props: EditProps): React.ReactElement => {
@@ -22,6 +23,13 @@ export const OrderEdit = (props: EditProps): React.ReactElement => {
           <SelectInput optionText={CustomerTitle} />
         </ReferenceInput>
         <NumberInput label="Discount" source="discount" />
+        <ReferenceInput
+          source="orderReturns.id"
+          reference="OrderReturn"
+          label="OrderReturns"
+        >
+          <SelectInput optionText={OrderReturnTitle} />
+        </ReferenceInput>
         <ReferenceInput source="product.id" reference="Product" label="Product">
           <SelectInput optionText={ProductTitle} />
         </ReferenceInput>

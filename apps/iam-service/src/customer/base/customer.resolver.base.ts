@@ -29,6 +29,7 @@ import { Customer } from "./Customer";
 import { OrderFindManyArgs } from "../../order/base/OrderFindManyArgs";
 import { Order } from "../../order/base/Order";
 import { Address } from "../../address/base/Address";
+import { OrderReturn } from "../../orderReturn/base/OrderReturn";
 import { CustomerService } from "../customer.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => Customer)
@@ -103,6 +104,12 @@ export class CustomerResolverBase {
               connect: args.data.address,
             }
           : undefined,
+
+        orderReturns: args.data.orderReturns
+          ? {
+              connect: args.data.orderReturns,
+            }
+          : undefined,
       },
     });
   }
@@ -126,6 +133,12 @@ export class CustomerResolverBase {
           address: args.data.address
             ? {
                 connect: args.data.address,
+              }
+            : undefined,
+
+          orderReturns: args.data.orderReturns
+            ? {
+                connect: args.data.orderReturns,
               }
             : undefined,
         },
@@ -195,6 +208,27 @@ export class CustomerResolverBase {
     @graphql.Parent() parent: Customer
   ): Promise<Address | null> {
     const result = await this.service.getAddress(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => OrderReturn, {
+    nullable: true,
+    name: "orderReturns",
+  })
+  @nestAccessControl.UseRoles({
+    resource: "OrderReturn",
+    action: "read",
+    possession: "any",
+  })
+  async resolveFieldOrderReturns(
+    @graphql.Parent() parent: Customer
+  ): Promise<OrderReturn | null> {
+    const result = await this.service.getOrderReturns(parent.id);
 
     if (!result) {
       return null;

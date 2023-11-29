@@ -12,6 +12,7 @@ import {
 } from "react-admin";
 
 import { AddressTitle } from "../address/AddressTitle";
+import { OrderReturnTitle } from "../orderReturn/OrderReturnTitle";
 import { OrderTitle } from "../order/OrderTitle";
 
 export const CustomerEdit = (props: EditProps): React.ReactElement => {
@@ -24,6 +25,13 @@ export const CustomerEdit = (props: EditProps): React.ReactElement => {
         <TextInput label="Email" source="email" type="email" />
         <TextInput label="First Name" source="firstName" />
         <TextInput label="Last Name" source="lastName" />
+        <ReferenceInput
+          source="orderReturns.id"
+          reference="OrderReturn"
+          label="OrderReturns"
+        >
+          <SelectInput optionText={OrderReturnTitle} />
+        </ReferenceInput>
         <ReferenceArrayInput
           source="orders"
           reference="Order"

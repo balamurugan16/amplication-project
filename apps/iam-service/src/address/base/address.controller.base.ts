@@ -236,6 +236,13 @@ export class AddressControllerBase {
         firstName: true,
         id: true,
         lastName: true,
+
+        orderReturns: {
+          select: {
+            id: true,
+          },
+        },
+
         phone: true,
         updatedAt: true,
       },
